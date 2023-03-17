@@ -14,7 +14,7 @@ var arguments = pmd.getArguments(process);
 var
   defaultConfig = require('./default'),
   defaultConfigFolder = require('./defaultFolder'),
-  userConfig = require('./config')
+  userConfig = require(arguments.config)
 ;
 
 // Check that project exists in config.
