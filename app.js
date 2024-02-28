@@ -82,6 +82,10 @@ if (config.toc.template){
   pmd.validatePathRef(config.toc.template, 'config.toc.template');
 }
 
+const dox = require('./lib/dox.js')
+
+// Object.entries(Handlebars.helpers).forEach(a => console.log(...a))
+// Object.entries(dox).forEach(a => console.log(...a))
 
 // Process data and write to file
 var objs = pmd.generateData(config);
