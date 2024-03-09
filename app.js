@@ -74,6 +74,10 @@ config.folders.forEach(function(folder, key){
     fs.emptydirSync(path.resolve(folder.output.path));
   }
 
+  if (folder.output.template) {
+    folder.output.compiledTemplate = Handlebars.compile(folder.output.template)
+  }
+
   config.folders[key] = folder;
 
 });// config.folders.forEach
