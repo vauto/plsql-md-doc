@@ -56,7 +56,12 @@ config.folders.forEach(function(folder, key){
 
   // Check that template exists
   pmd.validatePathRef(folder.template, 'template');
-  folder.templateContent = fs.readFileSync(path.resolve(folder.template),'utf8');
+  folder.templateContent = fs.readFileSync(path.resolve(folder.template), 'utf8');
+  folder.compiledTemplate = Handlebars.compile(folder.templateContent)
+  if (!folder.compiledTemplate) {
+    throw new Error("Template failed to compile")
+  }
+
 
   // Check that the srcPath exists
   pmd.validatePathRef(folder.source.path, 'folder.source.path');
