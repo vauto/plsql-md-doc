@@ -80,7 +80,7 @@ config.folders.forEach(function(folder, key){
   }
 
   if (folder.output.template) {
-    folder.output.compiledTemplate = Handlebars.compile(folder.output.template)
+    folder.output.compiledTemplate = Handlebars.compile(folder.output.template, { noEscape: true })
   }
 
   config.folders[key] = folder;
