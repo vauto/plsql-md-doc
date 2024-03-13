@@ -22,7 +22,29 @@ if (!userConfig[arguments.project]){
   pmd.raiseError('Can not find project: ' + arguments.project + ' in config.json');
 }
 
-var config = extend(true, {}, defaultConfig, userConfig[arguments.project]);
+/**
+ * @typedef Config
+ * @property {Folder[]} folders
+ *
+ * @typedef Folder
+ * @property {Source} source
+ * @property {Output} output
+ * @property {string?} template           The path to the template file
+ * @property {string?} templateContent    The content of {@link #template}
+ * @property {string?} compiledTemplate   The {@link #templateContent} when compiled
+ *
+ * @typedef Output
+ * @property {boolean} delete=false
+ * @property {string} path
+ * @property {string?} template
+ * @property {object?} compiledTemplate   The {@link #template} when compiled
+ * @property {string[]?} files            Additional output files
+ *
+ * @typedef Source
+ */
+
+/** @type {Config} */
+const config = extend(true, {}, defaultConfig, userConfig[arguments.project]);
 
 
 debug.debug = config.debug;
@@ -37,8 +59,6 @@ if (config.projectDispName.trim().length === 0){
 }
 
 debug.log('config: ', config);
-
-
 
 // If only one folder (i.e. not an array), covert to array
 if (!Array.isArray(config.folders)){
