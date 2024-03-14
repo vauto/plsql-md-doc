@@ -2,19 +2,21 @@
 
 This document outlines all the JavaDoc options for PL/SQL as well as examples on how to reference them in a template.
 
-- [Intro](#intro)
-- [Ignore](#ignore)
-- [Tags](#tags)
-  - [`@author`](#tag-author)
-  - [`@created`](#tag-created)
-  - [`@example`](#tag-example)
-  - [`@issue`](#tag-issue)
-  - [`@param`](#tag-param)
-  - [`@private`](#tag-private)
-  - [`@return`](#tag-return)
-- [Package Level Comments](#package-level)
-- [`@constant`](#constants)s
-- [`@type`](#types)s
+- [JavaDoc for PL/SQL](#javadoc-for-plsql)
+    - [Intro](#intro)
+    - [Ignore](#ignore)
+    - [Tags](#tags)
+        - [`@author`](#author)
+        - [`@created`](#created)
+        - [`@example`](#example)
+        - [Example](#example-1)
+            - [`@issue`](#issue)
+        - [`@param`](#param)
+        - [`@private`](#private)
+        - [`@return`](#return)
+    - [Package Level Comments](#package-level-comments)
+    - [`@constant`s](#constants)
+        - [`@type`s](#types)
 
 
 
@@ -39,6 +41,7 @@ For more examples of JavaDoc check out the [OOS-Utils](https://github.com/OraOpe
 
 
 ## Ignore<a name ="ignore"></a>
+
 Blocks of code can be ignored by using `/*!` instead of `/**` to start the block of documentation. If a block of code is ignored it won't be available for the template to process. Example:
 
 ```plsql
@@ -53,11 +56,12 @@ Blocks of code can be ignored by using `/*!` instead of `/**` to start the block
 
 ## Tags<a name="tags"></a>
 
-### `@author` <a name="tag-author"></a>
+### `@author`<a name="tag-author"></a>
 
 `@author <author name>`
 
 Example:
+
 ```plsql
 /**
  * ...
@@ -78,13 +82,13 @@ Result:
 Author: Martin Giffy D'Souza
 ```
 
-### `@created` <a name="tag-created"></a>
+### `@created`<a name="tag-created"></a>
 
 `@created` Is used to note the date the method was created.
 
 Example: see [`@author`](#tag-author)
 
-### `@example` <a name="tag-example"></a>
+### `@example`<a name="tag-example"></a>
 
 This tag allows you to include a full multiline example of your code along with any results.
 
@@ -121,13 +125,14 @@ from dual;
 ```
 </code></pre>
 
-#### `@issue` <a name="tag-issue"></a>
+#### `@issue`<a name="tag-issue"></a>
 
 `@issue <number> <description (optional)>`
 
 The `@issue` tag is used to reference multiple main issues for a give method. If a hash (`#`) is prefixed to the issue number it will be removed from the issue. The reason it is removed is that most references to the hash are for GitHub or Bitbucket purposes. They don't work for links as the hash will be considered as an anchor tag.
 
 Example: _Note: the leading hash does not matter_
+
 ```plsql
 /**
  * ...
@@ -139,6 +144,7 @@ Example: _Note: the leading hash does not matter_
 ```
 
 Template Reference:
+
 ```markdown
 {{#if issues}}
 ### Issues
@@ -161,13 +167,14 @@ Issue | Description
 [46](/issues/46) |
 ```
 
-### `@param` <a name="tag-param"></a>
+### `@param`<a name="tag-param"></a>
 
 `@param <name> <description (optional)>`
 
 The `@param` tag is used to reference parameters for a given method. Use one for each parameter which should match the name of each parameter.
 
 Example:
+
 ```plsql
 /**
  * ...
@@ -179,6 +186,7 @@ Example:
 ```
 
 Template Reference:
+
 ```markdown
 {{#if params}}
 ### Parameters
@@ -201,13 +209,14 @@ p_page_id | APEX page ID
 p_session_id |
 ```
 
-### `@private` <a name="tag-private"></a>
+### `@private`<a name="tag-private"></a>
 
 The `@private` tag is used on private methods. You can chose if these methods should be displayed by the template. Reference it in the template by using the `isPrivate` attribute.
 
 Each element in [`types`](#types) and [`constants`](#constants) also contain the `isPrivate` boolean attribute. It is recommended to apply this tag to internal (package body) constants and types.
 
 Example:
+
 ```plsql
 /**
  * ...
@@ -217,6 +226,7 @@ Example:
 ```
 
 Template Reference:
+
 ```markdown
 {{#each methods}}
 {{#unless isPrivate}}
@@ -226,12 +236,13 @@ Items shown here will only be displayed if not private
 {{/each}}
 ```
 
-### `@return` <a name="tag-return"></a>
+### `@return`<a name="tag-return"></a>
 
 `@return` Is used to describe the object returned by a function.
 
 
 Example:
+
 ```plsql
 /**
  * ...
@@ -268,6 +279,7 @@ p_user_id |
 ```
 
 ## Package Level Comments<a name="package-level"></a>
+
 Packages may contain JavaDoc comments as well. The following is an example of package level documentation:
 
 ```plsql
@@ -295,6 +307,7 @@ create or replace package body oos_util_apex
 Constants should be placed at the top of the package. There should only be one JavaDoc documentation area for constants. Constants are documented using the `@constant` tag and use the notation: `@constant <constant name> <optional description>`.
 
 Example:
+
 ```plsql
 -- CONSTANTS
 /**
@@ -334,6 +347,7 @@ gc_color_blue | `gc_color_blue constant varchar2(10) := 'blue';` | The css safe 
 Types are very similar to [constants](#constants). They should be placed at the top of the package. There should only be one JavaDoc documentation area for constants. Types are documented using the `@type` tag and use the notation: `@type <type name> <optional description>`
 
 Example:
+
 ```plsql
 -- TYPES
 /**
