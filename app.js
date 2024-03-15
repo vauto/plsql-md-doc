@@ -15,10 +15,10 @@ var
   defaultConfig = require('./default'),
   defaultConfigFolder = require('./defaultFolder'),
   userConfig = require(arguments.config)
-;
+  ;
 
 // Check that project exists in config.
-if (!userConfig[arguments.project]){
+if (!userConfig[arguments.project]) {
   pmd.raiseError('Can not find project: ' + arguments.project + ' in config.json');
 }
 
@@ -51,23 +51,23 @@ console.debug = config.debug;
 console.setup();
 
 // #10
-if (config.projectDispName.trim().length === 0){
+if (config.projectDispName.trim().length === 0) {
   config.projectDispName = arguments.project;
 }
 
 console.log('config: ', config);
 
 // If only one folder (i.e. not an array), covert to array
-if (!Array.isArray(config.folders)){
+if (!Array.isArray(config.folders)) {
   config.folders = [config.folders];
 }
 
 // Apply the default config to each element
-config.folders.forEach(function(folder, key){
+config.folders.forEach(function (folder, key) {
   folder = extend(true, {}, defaultConfigFolder, folder);
 
   // Convert the regexp into a regexp object
-  if (folder.source.fileFilterRegexp.length > 0){
+  if (folder.source.fileFilterRegexp.length > 0) {
     folder.source.fileFilterRegexp = new RegExp(folder.source.fileFilterRegexp, 'i');
   }
 
@@ -84,7 +84,7 @@ config.folders.forEach(function(folder, key){
   pmd.validatePathRef(folder.source.path, 'folder.source.path');
 
   // Check if output path is defined
-  if (folder.output.path.length == 0){
+  if (folder.output.path.length == 0) {
     pmd.raiseError('folder.output.path is required', true);
   }
 
@@ -92,7 +92,7 @@ config.folders.forEach(function(folder, key){
   fs.ensureDirSync(path.resolve(folder.output.path));
 
   // #11 Delete if told to
-  if (folder.output.delete){
+  if (folder.output.delete) {
     fs.emptydirSync(path.resolve(folder.output.path));
   }
 
@@ -104,7 +104,7 @@ config.folders.forEach(function(folder, key){
 
 });// config.folders.forEach
 
-if (config.toc.template){
+if (config.toc.template) {
   pmd.validatePathRef(config.toc.template, 'config.toc.template');
 }
 
