@@ -3,9 +3,9 @@ var
   fs = require('./lib/fs.js'),
   Handlebars = require('./lib/handlebars.js'),
   extend = require('node.extend'),
-  debug = require('./lib/debug.js'),
-  pmd = require('./lib/pmd.js')(debug, extend)
-;
+  { console } = require('./lib/debug.js'),
+  pmd = require('./lib/pmd.js')
+  ;
 
 
 // Handle parameters
@@ -47,18 +47,15 @@ if (!userConfig[arguments.project]){
 const config = extend(true, {}, defaultConfig, userConfig[arguments.project]);
 
 
-debug.debug = config.debug;
-debug.setup();
-pmd.debug = debug
-
-// only call debug from this point on
+console.debug = config.debug;
+console.setup();
 
 // #10
 if (config.projectDispName.trim().length === 0){
   config.projectDispName = arguments.project;
 }
 
-debug.log('config: ', config);
+console.log('config: ', config);
 
 // If only one folder (i.e. not an array), covert to array
 if (!Array.isArray(config.folders)){
