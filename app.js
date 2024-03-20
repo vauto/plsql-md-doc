@@ -1,12 +1,9 @@
-var
-  path = require('path'),
-  fs = require('./lib/fs.js'),
-  Handlebars = require('./lib/handlebars.js'),
-  extend = require('node.extend'),
-  { console } = require('./lib/debug.js'),
-  pmd = require('./lib/pmd.js')
-  ;
-
+const path = require('path')
+const fs = require('./lib/fs.js')
+const Handlebars = require('./lib/handlebars.js')
+const extend = require('node.extend')
+const console = require('./lib/debug')
+const pmd = require('./lib/pmd.js')
 
 // Handle parameters
 var arguments = pmd.getArguments(process);
