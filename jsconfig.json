@@ -1,0 +1,19 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=759670
+  // for the documentation about the jsconfig.json format
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true
+  },
+  "exclude": [
+    "node_modules",
+    "app/node_modules",
+    "bower_components",
+    "jspm_packages",
+    "tmp",
+    "temp",
+    "dist"
+  ]
+}
