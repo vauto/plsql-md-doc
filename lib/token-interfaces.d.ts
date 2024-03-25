@@ -24,5 +24,5 @@ export interface TokenLike extends HasPosition {
 /**
  * For matching tokens.  Arrays indicate `OR` matches.
  */
-export type TokenPattern = TokenLike | string | TokenPattern[] | { value: string?}
+export type TokenPattern = string | TokenPattern[] | { type?: string, value?: string?}
 
