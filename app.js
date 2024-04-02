@@ -1,3 +1,4 @@
+// @ts-check
 const path = require('path')
 const fs = require('./lib/fs.js')
 const Handlebars = require('./lib/handlebars.js')
@@ -6,11 +7,10 @@ const console = require('./lib/debug')
 const pmd = require('./lib/pmd.js')
 
 // Handle parameters
-var arguments = pmd.getArguments(process);
+const arguments = pmd.getArguments(process);
 
-var
-  defaultConfig = require('./default'),
-  defaultConfigFolder = require('./defaultFolder'),
+const defaultConfig = require('./default.json'),
+  defaultConfigFolder = require('./defaultFolder.json'),
   userConfig = require(arguments.config)
   ;
 
@@ -48,12 +48,13 @@ config.folders.forEach(function (folder, key) {
   folder = extend(true, {}, defaultConfigFolder, folder)
 
   // Convert the regexp into a regexp object
-  if (folder.source.fileFilterRegexp.length > 0) {
+  if (folder.source.fileFilterRegexp && typeof folder.source.fileFilterRegexp === 'string') {
     folder.source.fileFilterRegexp = new RegExp(folder.source.fileFilterRegexp, 'i');
   }
 
   // Check that template exists
   pmd.validatePathRef(folder.template, 'template');
+  // @ts-ignore LATER: readFileSync
   folder.templateContent = fs.readFileSync(path.resolve(folder.template), 'utf8');
   folder.compiledTemplate = Handlebars.compile(folder.templateContent)
   if (!folder.compiledTemplate) {
@@ -70,10 +71,12 @@ config.folders.forEach(function (folder, key) {
   }
 
   // Create outputPath if doesn't exist
+  // @ts-ignore LATER: ensureDirSync
   fs.ensureDirSync(path.resolve(folder.output.path));
 
   // #11 Delete if told to
   if (folder.output.delete) {
+    // @ts-ignore LATER: emptyDirSync
     fs.emptydirSync(path.resolve(folder.output.path));
   }
 
