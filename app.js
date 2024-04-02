@@ -93,7 +93,7 @@ if (config.toc.template) {
 
 // Process data and write to file
 var objs = pmd.generateData(config);
-objs = pmd.mergeObjs(objs, { excludeVisiblity: ['private'] });
+objs = pmd.mergeObjs(objs, config.options);
 
 // First generate the TOC than the files, so the packages also have a TOC
 pmd.generateToc(config, objs);
