@@ -1,9 +1,27 @@
+import { TemplateDelegate } from "handlebars"
+
+
 export interface Config {
+  /** The project display name */
+  projectDispName: string = ""
+
+  /** When true, enables debug mode. */
+  debug: boolean = false
+
+  toc: TableOfContents
+
+  /** A collection of folders to generate */
+  folders: Folder | Folder[] = []
+
   /** Config options */
   options: Options
 }
 
-import { TemplateDelegate } from "handlebars"
+export interface TableOfContents {
+  fileName: string = "index.md"
+  /** The path to the template file, if any */
+  template?: string
+}
 
 export interface Folder {
   /** Information about the  */
@@ -24,6 +42,12 @@ export interface Options {
    * Defaults to false.
    */
   includePrivateMembers: boolean = false
+
+  /**
+   * A default description to use if none is specified.
+   * Defaults to null.
+   */
+  defaultDescription?: string
 }
 
 export interface Output {
@@ -40,4 +64,6 @@ export interface Output {
 }
 
 export interface Source {
+  path: string
+  fileFilterRegexp?: string | RegExp
 }
