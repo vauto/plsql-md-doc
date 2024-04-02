@@ -61,7 +61,7 @@ if (!Array.isArray(config.folders)) {
 
 // Apply the default config to each element
 config.folders.forEach(function (folder, key) {
-  folder = extend(true, {}, defaultConfigFolder, folder);
+  folder = extend(true, {}, defaultConfigFolder, folder)
 
   // Convert the regexp into a regexp object
   if (folder.source.fileFilterRegexp.length > 0) {

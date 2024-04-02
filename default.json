@@ -1,8 +1,8 @@
 {
-  "projectDispName" : "",
-  "debug" : false,
-  "toc" : {
-    "fileName" : "index.md"
+  "projectDispName": "",
+  "debug": false,
+  "toc": {
+    "fileName": "index.md"
   },
-  "folders" : {}
+  "folders": {}
 }

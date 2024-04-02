@@ -1,11 +1,11 @@
 {
-  "output" : {
-    "delete" : false,
-    "path" : ""
+  "output": {
+    "delete": false,
+    "path": ""
   },
-  "source" : {
-    "path" : "",
-    "fileFilterRegexp" : ""
+  "source": {
+    "path": "",
+    "fileFilterRegexp": ""
   },
-  "template" : ""
+  "template": ""
 }
