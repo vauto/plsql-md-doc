@@ -23,6 +23,11 @@ export interface TableOfContents {
   template?: string
 }
 
+export interface Resource {
+  source: string
+  output: string
+}
+
 export interface Folder {
   /** Information about the  */
   source: Source
@@ -33,7 +38,9 @@ export interface Folder {
   /** The content of {@link template} */
   templateContent?: string
   /** The {@link templateContent} when compiled. */
-  compiledTemplate?: TemplateDelegate<any>
+  compiledTemplate?: TemplateDelegate<any>,
+  /** Additional resources, if any. */
+  resources: Resource[] = []
 }
 
 export interface Options {
