@@ -4,5 +4,9 @@
   "toc": {
     "fileName": "index.md"
   },
-  "folders": {}
+  "folders": {},
+  "options": {
+    "includePrivateMembers": false,
+    "defaultDescription": null
+  }
 }

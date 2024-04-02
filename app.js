@@ -20,24 +20,8 @@ if (!userConfig[arguments.project]) {
 }
 
 /**
- * @typedef Config
- * @property {Folder[]} folders
- *
- * @typedef Folder
- * @property {Source} source
- * @property {Output} output
- * @property {string?} template           The path to the template file
- * @property {string?} templateContent    The content of {@link #template}
- * @property {string?} compiledTemplate   The {@link #templateContent} when compiled
- *
- * @typedef Output
- * @property {boolean} delete=false
- * @property {string} path
- * @property {string?} template
- * @property {object?} compiledTemplate   The {@link #template} when compiled
- * @property {string[]?} files            Additional output files
- *
- * @typedef Source
+ * @typedef {import("./lib/config").Config} Config
+ * @typedef {import("./lib/config").Folder} Folder
  */
 
 /** @type {Config} */
