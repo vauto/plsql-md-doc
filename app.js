@@ -95,7 +95,7 @@ if (config.toc.template) {
 // Object.entries(Handlebars.helpers).forEach(a => console.log(...a))
 
 // Process data and write to file
-var objs = pmd.generateData(config);
+var objs = [...pmd.generateData(config)];
 objs = pmd.mergeObjs(objs, config.options);
 
 // First generate the TOC than the files, so the packages also have a TOC
