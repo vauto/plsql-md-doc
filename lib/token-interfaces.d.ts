@@ -24,5 +24,9 @@ export interface TokenLike extends HasPosition {
 /**
  * For matching tokens.  Arrays indicate `OR` matches.
  */
-export type TokenPattern = string | TokenPattern[] | { type?: string, value?: string?}
-
+export type TokenPattern = string | TokenPattern[] | {
+  type?: string,
+  value?: string,
+  /** Indicates this should match end-of-stream / end-of-file. */
+  done?: true
+}
