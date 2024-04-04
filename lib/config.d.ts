@@ -11,7 +11,7 @@ export interface Config {
   toc: TableOfContents
 
   /** A collection of folders to generate */
-  folders: Folder | Folder[] = []
+  folders: Folder[] = []
 
   /** Config options */
   options: Options
