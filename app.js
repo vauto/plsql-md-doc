@@ -1,6 +1,6 @@
 // @ts-check
 const path = require('path')
-const fs = require('./lib/fs.js')
+const fs = require('fs-extra')
 const Handlebars = require('./lib/handlebars.js')
 const extend = require('node.extend')
 const console = require('./lib/debug')
@@ -54,7 +54,6 @@ config.folders.forEach(function (folder, key) {
 
   // Check that template exists
   pmd.validatePathRef(folder.template, 'template');
-  // @ts-ignore LATER: readFileSync
   folder.templateContent = fs.readFileSync(path.resolve(folder.template), 'utf8');
   folder.compiledTemplate = Handlebars.compile(folder.templateContent)
   if (!folder.compiledTemplate) {
@@ -71,12 +70,10 @@ config.folders.forEach(function (folder, key) {
   }
 
   // Create outputPath if doesn't exist
-  // @ts-ignore LATER: ensureDirSync
   fs.ensureDirSync(path.resolve(folder.output.path));
 
   // #11 Delete if told to
   if (folder.output.delete) {
-    // @ts-ignore LATER: emptyDirSync
     fs.emptydirSync(path.resolve(folder.output.path));
   }
 
