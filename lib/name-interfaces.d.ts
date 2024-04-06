@@ -1,3 +1,7 @@
+import { TokenFormat } from "./token-interfaces"
+
+export type ItemNameFormat = TokenFormat | 'FILE'
+
 export interface ItemName<TItemName extends ItemName<TItemName>> {
 
   get text(): string
@@ -6,5 +10,11 @@ export interface ItemName<TItemName extends ItemName<TItemName>> {
 
   equals(other: TItemName): boolean
   localeCompare(other: TItemName): number
+
+  /**
+   * @param format How to format as a string.
+   * @returns {string}
+   */
+  toString(format?: ItemNameFormat = '')
 }
 

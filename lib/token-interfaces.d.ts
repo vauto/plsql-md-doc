@@ -2,6 +2,8 @@ import { HasPosition, Position, TextSpan } from "./position";
 
 export type TriviaFlag = boolean | 'structured'
 
+export type TokenFormat = null | '' | 'T' | 'V'
+
 export interface TokenLike extends HasPosition {
   /**
    * The name of the group, as passed to compile.
@@ -19,6 +21,18 @@ export interface TokenLike extends HasPosition {
    * Whether this is considered a "trivia" token (e.g., whitespace, comment).
    */
   isTrivia: TriviaFlag;
+
+  /**
+   * Gets the token as a string.
+   * @param format How to format the token.
+   */
+  toString(format?: TokenFormat = '')
+
+  /**
+   * Gets the full token text as a string.
+   * @param format How to format the token.
+   */
+  toFullString(format?: TokenFormat = '')
 }
 
 /**
