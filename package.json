@@ -18,6 +18,7 @@
     "jsdoctypeparser": "^9.0.0",
     "markdown-it": "^13.0.1",
     "moo": "^0.5.2",
-    "node.extend": "^2.0.2"
+    "node.extend": "^2.0.2",
+    "relativize-url": "^0.1.0"
   }
 }
