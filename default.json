@@ -6,7 +6,6 @@
   },
   "folders": {},
   "options": {
-    "includePrivateMembers": false,
-    "defaultDescription": null
+    "includePrivateMembers": false
   }
 }

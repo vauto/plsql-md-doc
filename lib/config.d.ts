@@ -49,12 +49,6 @@ export interface Options {
    * Defaults to false.
    */
   includePrivateMembers: boolean = false
-
-  /**
-   * A default description to use if none is specified.
-   * Defaults to null.
-   */
-  defaultDescription?: string
 }
 
 export interface Output {
