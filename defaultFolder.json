@@ -1,7 +1,8 @@
 {
   "output": {
     "delete": false,
-    "path": ""
+    "path": "",
+    "ext": ".md"
   },
   "source": {
     "path": "",

@@ -61,7 +61,13 @@ export interface Output {
   /** The {@link template} when compiled. */
   compiledTemplate?: TemplateDelegate<any>
   /** Additional output files */
-  files: string[]?
+  files?: string[]
+
+  /**
+   * The file extension to use.
+   * Currently only `.md` is supported
+   */
+  ext: '.md'
 }
 
 export interface Source {
