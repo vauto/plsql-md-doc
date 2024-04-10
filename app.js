@@ -52,6 +52,10 @@ config.folders.forEach(function (folder, key) {
     folder.source.fileFilterRegexp = new RegExp(folder.source.fileFilterRegexp, 'i');
   }
 
+  // Ensure paths are normalized so we can do proper relative path processing.
+  // This is because we resolve relative file URIs (which is case-sensitive), but case-insensitive file systems can leads to problems with that.
+  folder.source.path = fs.realpathSync.native(folder.source.path)
+
   // Check that template exists
   pmd.validatePathRef(folder.template, 'template');
   folder.templateContent = fs.readFileSync(path.resolve(folder.template), 'utf8');
