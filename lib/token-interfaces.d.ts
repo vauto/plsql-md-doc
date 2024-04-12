@@ -42,5 +42,7 @@ export type TokenPattern = string | TokenPattern[] | {
   type?: string,
   value?: string,
   /** Indicates this should match end-of-stream / end-of-file. */
-  done?: true
+  done?: true,
+  /** Indictes the inverse should be done. */
+  inverse?: true
 }
