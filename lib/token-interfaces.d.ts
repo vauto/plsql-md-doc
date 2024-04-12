@@ -26,13 +26,18 @@ export interface TokenLike extends HasPosition {
    * Gets the token as a string.
    * @param format How to format the token.
    */
-  toString(format?: TokenFormat = '')
+  toString(format?: TokenFormat = ''): string
 
   /**
    * Gets the full token text as a string.
    * @param format How to format the token.
    */
-  toFullString(format?: TokenFormat = '')
+  toFullString(format?: TokenFormat = ''): string
+
+  /**
+   * Gets the relevant data as JSON.
+   */
+  toJSON(): object
 }
 
 /**
